@@ -1,0 +1,29 @@
+
+
+<mat-card class="login-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="login-form" [formGroup]="loginForm">
+            <mat-form-field class="login-full-width" appearance="fill">
+              <mat-label>username</mat-label>
+              <input matInput type="text" formControlName= "username">
+            </mat-form-field>
+          
+            <mat-form-field class="login-full-width" appearance="fill">
+              <mat-label>password</mat-label>
+              <input matInput type="password" formControlName= "password">
+            </mat-form-field>
+          </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <div *ngIf="error" style="color: red;"> {{error}} </div>
+      
+      <button mat-raised-button color="primary" (click)="onSubmit()" type="submit" [disabled]="!loginForm.valid">Log in</button>
+      <br>
+      don't have an account ?<a mat-button [routerLink]="['/auth/register']"> sign up </a>
+    </mat-card-actions>
+  </mat-card>
+  

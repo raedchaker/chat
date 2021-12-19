@@ -1,0 +1,49 @@
+
+
+<mat-card class="register-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Sign up</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="register-form" [formGroup]="registerForm">
+            
+            <mat-form-field class="register-full-width" appearance="fill">
+              <mat-label>email</mat-label>
+              <input matInput type="email" placeholder="example@example.com" formControlName="email">
+            </mat-form-field>
+          
+            <mat-form-field class="register-full-width" appearance="fill">
+              <mat-label>username</mat-label>
+              <input matInput type="text" placeholder="username" formControlName="username">
+            </mat-form-field>
+          
+            <mat-form-field class="register-full-width" appearance="fill">
+              <mat-label>first name</mat-label>
+              <input matInput type="text" placeholder="first name" formControlName="firstName">
+            </mat-form-field>
+          
+            <mat-form-field class="register-full-width" appearance="fill">
+              <mat-label>last name</mat-label>
+              <input matInput type="text" placeholder="last name" formControlName="lastName">
+            </mat-form-field>
+            
+            <mat-form-field class="register-full-width" appearance="fill">
+              <mat-label>password</mat-label>
+              <input matInput type="password" placeholder="********" formControlName="password">
+            </mat-form-field>
+            
+            <mat-form-field class="register-full-width" appearance="fill">
+              <mat-label>repeat password</mat-label>
+              <input matInput type="password" placeholder="********" formControlName="password2">
+            </mat-form-field>
+            
+          </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid" (click)="onSubmit()">Register</button>
+      <br>
+      Already a member?<a mat-button [routerLink]="['/auth/login']">Log in </a>
+    </mat-card-actions>
+  </mat-card>
+  
