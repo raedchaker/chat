@@ -11,7 +11,12 @@
           <ul id="users"></ul> -->
     </div>
     <div class="chat-messages">
-      
+      <div class="message" *ngFor="let message of messages">
+        <p class="meta"> {{message.sender.username}} <span> {{message.createdAt | date : 'dd/MM hh:mm'}} </span></p>
+        <p class="text">
+          {{message.content}}
+        </p>
+      </div>
     </div>
   </main>
   <div class="chat-form-container">
