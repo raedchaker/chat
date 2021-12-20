@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './_interceptor/auth.interceptor';
+import { LoginGuard, UserGuard } from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,10 @@ import { AuthInterceptor } from './_interceptor/auth.interceptor';
     provide : HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi   : true,
-  }],
+  },
+  UserGuard,
+  LoginGuard
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

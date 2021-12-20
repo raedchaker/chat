@@ -11,16 +11,6 @@ import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  static userSubject: ReplaySubject<User | null> = new ReplaySubject(1);
-
-  set user(user: User | null) {
-    AuthService.userSubject.next(user);
-  }
-
-  get user$(): Observable<User | null> {
-    return AuthService.userSubject.asObservable();
-  }
-
   login(payload) {
     return this.http.post<any>('http://localhost:3000/api/users/log-in', payload);
   }
@@ -32,6 +22,14 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+  }
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) {
+      return true;
+    }
+    return false;
   }
 
 }
